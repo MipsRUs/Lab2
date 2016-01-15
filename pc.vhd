@@ -1,6 +1,14 @@
 -------------------------------------------------------------------
 -- Copyright MIPS_R_US 2016 - All Rights Reserved 
 --
+-- File: pctb.vhd
+-- Team: MIPS_R_US
+-- Members:
+-- 		Stefan Cao (ID# 79267250)
+--		Ting-Yi Huang (ID# 58106363)
+--		Nehme Saikali (ID# 89201494)
+--		Linda Vang (ID# 71434490)
+--
 -- Description:
 --		Program Counter for ALU_32_Bit
 --
