@@ -27,17 +27,59 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 ENTITY pc IS
-PORT (clk: in STD_LOGIC ;
-      rst: in STD_LOGIC ;
-      
-      addr: inout STD_LOGIC_VECTOR(31 DOWNTO 0);
-      adderio: inout STD_LOGIC_VECTOR(31 DOWNTO 0));
-end;
+	GENERIC (NBIT: INTEGER := 32;
+				STEP: INTEGER := 1);
+	PORT (clk: in STD_LOGIC ;
+      		rst: in STD_LOGIC ;
+      		isBranch: in STD_LOGIC;  -- this is set to '1' if there is a branch
+ 
+ 	-- SC 2016-01-15: commented out 	     
+    --addr: inout STD_LOGIC_VECTOR(31 DOWNTO 0);
+    --adderio: inout STD_LOGIC_VECTOR(31 DOWNTO 0));
+	
+	addr_in: in STD_LOGIC_VECTOR(31 DOWNTO 0);
+	addr_out: out STD_LOGIC_VECtOR(31 DOWNTO 0));
+
+end pc;
       
 architecture logic of pc is
 begin
 
+	-- SC 2016-01-15: Added the following code 
+	PROCESS (clk)
+		VARIABLE temp : std_logic_vector (0 to NBIT-1);		--defining variable temp (used as temporary storage)
+	BEGIN
+		if(clk'event and clk='1') THEN
+			if (rst='1') THEN										-- synchronous reset
+				L1: for i in addr_in'RANGE LOOP
+					temp(i):='0';
+				end loop;
+			elsif (isBranch='1') THEN								-- load values from din to temp
+				temp := addr_in;
+			else										-- ascending (counting up)
+				temp := std_logic_vector(unsigned(temp)+STEP);
+			end if;
+		end if;
+		
+	dout <= temp;														-- output the values
+	end process;
 
-adderio <= (std_logic_vector(to_unsigned((1), 32))) xor addr;
 
-end architecture;
+
+
+
+
+
+
+
+
+-- SC 2016-01-15: commented out 
+--adderio <= (std_logic_vector(to_unsigned((1), 32))) xor addr;
+
+-- SC 2016-01-15: changed 'architecture' to 'logic'
+end logic;
+
+
+
+
+
