@@ -86,7 +86,7 @@ begin
 		wait for 10 ns;
 		
 		rst_tb <= '0';
-		wait for 50 ns;
+		wait for 10 ns;
 
 		
 		
@@ -105,7 +105,7 @@ begin
 
 		
 		
-		wait for 60 ns;
+		wait for 10 ns;
 
    end process;
 
