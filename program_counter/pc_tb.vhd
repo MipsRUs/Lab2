@@ -92,6 +92,9 @@ begin
 		
 		addr_in_tb <= "00000000000000000111111111111111";
 		isBranch_tb <='1';
+		wait 10 ns;
+
+		isBranch_tb <= '0';
 
 		
 		
