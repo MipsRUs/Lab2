@@ -86,26 +86,16 @@ begin
 		wait for 10 ns;
 		
 		rst_tb <= '0';
-		wait for 10 ns;
+		wait for 100 ns;
 
 		
 		
-		-- resetting to 0's
-		rst_tb <= '1';
-		wait for 10 ns;
-
-		rst_tb <= '0';
-		wait for 10 ns;
-
-
-
-	
 		addr_in_tb <= "00000000000000000111111111111111";
 		isBranch_tb <='1';
 
 		
 		
-		wait for 10 ns;
+		wait for 100 ns;
 
    end process;
 
