@@ -61,7 +61,7 @@ begin
 			end if;
 		end if;
 		
-	dout <= temp;														-- output the values
+	addr_out <= temp;														-- output the values
 	end process;
 
 
