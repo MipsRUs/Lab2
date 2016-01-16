@@ -96,6 +96,13 @@ begin
 
 		isBranch_tb <= '0';
 
+		wait for 30 ns;
+
+		rst_tb <= '1';
+		wait for 10 ns;
+
+		rst_tb <= '0';
+
 		
 		
 		wait for 100 ns;
