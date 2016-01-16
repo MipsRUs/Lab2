@@ -32,7 +32,7 @@ architecture behavior of pc_tb is
     	rst: in STD_LOGIC;
 
     	-- SC 2016-01-16: Added
-    	isBranch: in STD_LOGIC
+    	isBranch: in STD_LOGIC;
       
      	-- SC 2016-01-16: Added
     	addr_in: in STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -83,19 +83,19 @@ begin
 		--resetting to 0's
 		rst_tb <= '1';
 
-		wait for 10ns;
+		wait for 10 ns;
 		
 		rst_tb <= '0';
-		wait for 50ns;
+		wait for 50 ns;
 
 		
 		
 		-- resetting to 0's
 		rst_tb <= '1';
-		wait for 10ns;
+		wait for 10 ns;
 
 		rst_tb <= '0';
-		wait for 10ns;
+		wait for 10 ns;
 
 
 
@@ -105,7 +105,7 @@ begin
 
 		
 		
-		wait for 60ns;
+		wait for 60 ns;
 
    end process;
 
