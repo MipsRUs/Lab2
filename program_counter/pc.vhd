@@ -11,6 +11,11 @@
 --
 -- Description:
 --		Program Counter for ALU_32_Bit
+--		adder is incorporated with this program counter
+--		features:
+--			rst: resets to all the bits to 0's
+--			isBranch: when set to '1', will read the addr_in and
+--				output it
 --
 -- History:
 -- 		Date		Update Description			Developer
@@ -19,27 +24,28 @@
 --
 -------------------------------------------------------------------
 
-
-
-
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 ENTITY pc IS
+	
+	-- program counter is set to 32 for this 32-bit ALU
 	GENERIC (NBIT: INTEGER := 32;
 				STEP: INTEGER := 1);
-	PORT (clk: in STD_LOGIC ;
-      		rst: in STD_LOGIC ;
-      		isBranch: in STD_LOGIC;  -- this is set to '1' if there is a branch
- 
- 	-- SC 2016-01-15: commented out 	     
-    --addr: inout STD_LOGIC_VECTOR(31 DOWNTO 0);
-    --adderio: inout STD_LOGIC_VECTOR(31 DOWNTO 0));
-	
-	addr_in: in STD_LOGIC_VECTOR(31 DOWNTO 0);
-	addr_out: out STD_LOGIC_VECtOR(31 DOWNTO 0));
+	PORT (clk: in STD_LOGIC;
+      		rst: in STD_LOGIC;
 
+      		-- this is set to '1' if there is a branch
+      		isBranch: in STD_LOGIC;  
+ 
+ 			-- SC 2016-01-15: commented out 	     
+   			--addr: inout STD_LOGIC_VECTOR(31 DOWNTO 0);
+  			--adderio: inout STD_LOGIC_VECTOR(31 DOWNTO 0));
+	
+			addr_in: in STD_LOGIC_VECTOR(31 DOWNTO 0);
+			addr_out: out STD_LOGIC_VECtOR(31 DOWNTO 0)
+	);
 end pc;
       
 architecture logic of pc is
@@ -47,29 +53,29 @@ begin
 
 	-- SC 2016-01-15: Added the following code 
 	PROCESS (clk)
-		VARIABLE temp : std_logic_vector (0 to NBIT-1);		--defining variable temp (used as temporary storage)
+
+		--defining variable temp (used as temporary storage)
+		VARIABLE temp : std_logic_vector (0 to NBIT-1);		
 	BEGIN
 		if(clk'event and clk='1') THEN
-			if (rst='1') THEN										-- synchronous reset
+
+			-- synchronous reset
+			if (rst='1') THEN										
 				L1: for i in addr_in'RANGE LOOP
 					temp(i):='0';
 				end loop;
-			elsif (isBranch='1') THEN								-- load values from din to temp
+
+			-- load values from addr_in to temp
+			elsif (isBranch='1') THEN								
 				temp := addr_in;
-			else										-- ascending (counting up)
+			else										
 				temp := std_logic_vector(unsigned(temp)+STEP);
 			end if;
 		end if;
 		
-	addr_out <= temp;														-- output the values
+	-- output the values
+	addr_out <= temp;														
 	end process;
-
-
-
-
-
-
-
 
 
 
