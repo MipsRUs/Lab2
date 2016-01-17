@@ -18,7 +18,7 @@
 -- 		Date		Update Description			Developer
 --	-----------   ----------------------   	  -------------
 --	1/16/2016		Created						TH, NS, LV, SC
---	1/16/2016		Not sure if working,
+--	1/16/2016		Not sure if working,		SC
 --						not getting correct
 --						waveform
 --
@@ -50,7 +50,7 @@ begin
 	variable mem1:mem;
 	begin
 
-		-- will not write_enable when usign 'preload'
+		-- will not use write_enable when using 'preload'
 		if(write_enable='1') then
 			mem1(to_integer(unsigned(addr))) := instruction_out;
 		else
