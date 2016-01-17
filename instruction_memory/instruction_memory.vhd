@@ -18,6 +18,9 @@
 -- 		Date		Update Description			Developer
 --	-----------   ----------------------   	  -------------
 --	1/16/2016		Created						TH, NS, LV, SC
+--	1/16/2016		Not sure if working,
+--						not getting correct
+--						waveform
 --
 -------------------------------------------------------------------
 
