@@ -43,7 +43,8 @@ END instruction_memory;
 ARCHITECTURE behavior of instruction_memory is
 subtype word is std_logic_vector(31 DOWNTO 0);
 
-type mem is array (0 to (2**32)-1) of word;
+--should be 2**32-1 but get overflow
+type mem is array (0 to (2**16)-1) of word;
 begin
 	IR_process: process (write_enable, addr, instruction_out)
 	variable mem1:mem;
