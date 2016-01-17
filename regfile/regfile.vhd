@@ -31,7 +31,7 @@ ENTITY regfile IS
 		NSEL : INTEGER := 3);
 	PORT (
 		clk : IN std_logic ;
-		rst : IN std_logic ; 
+		rst_s : IN std_logic ; 
 		we : IN std_logic ; -- write enable
 		raddr_1 : IN std_logic_vector (NSEL-1 DOWNTO 0); -- read address 1
 		raddr_2 : IN std_logic_vector (NSEL-1 DOWNTO 0); -- read address 2
