@@ -52,23 +52,58 @@ begin
 	funct: process(clk)
     variable mem:regFileTyp;
     variable rdata1_var, rdata2_var : STD_LOGIC_VECTOR(NBIT-1 downto 0);
+
+    -- SC 2016-01-17: Commented out
+    --begin
+    --if(clk'event and clk='1' and rst_s='1') then
+    -- 	all_zero: for i in 0 to 2**NSEL-1 loop
+    --    	mem(i) := (others=>'0');
+    --  	end loop; 
+    --  	rdata1_var := (others =>'0');
+    --  	rdata2_var := (others =>'0');
+    --elsif (clk'event and clk='1') then
+    --  	rdata1_var := mem(to_integer(unsigned(raddr_1)));
+    --  	rdata2_var := mem(to_integer(unsigned(raddr_2)));
+    --  	if (we='1') then
+    --   		mem(to_integer(unsigned(waddr))) := wdata;
+    --  	end if;
+    --end if;
+    --rdata_1 <= rdata1_var;
+    --rdata_2 <=rdata2_var;
+    --end process;
+
+
     begin
-    if(clk'event and clk='1' and rst_s='1') then
-     	all_zero: for i in 0 to 2**NSEL-1 loop
-        	mem(i) := (others=>'0');
-      	end loop; 
-      	rdata1_var := (others =>'0');
-      	rdata2_var := (others =>'0');
-    elsif (clk'event and clk='1') then
-      	rdata1_var := mem(to_integer(unsigned(raddr_1)));
-      	rdata2_var := mem(to_integer(unsigned(raddr_2)));
-      	if (we='1') then
-       		mem(to_integer(unsigned(waddr))) := wdata;
-      	end if;
+    if(clk'event and clk='1') then
+
+    	-- if reset is '1', make all registers in regfile to be 0's 
+      	if(rst_s='1') then
+
+      		-- going through every regfile
+        	zero_loop: for i in 0 to 2**NSEL-1 loop
+        		mem(i) := (others=>'0');
+       		end loop; 
+
+       		-- output rdata1 and rdata2 as 0's
+        	rdata1_var := (others =>'0');
+        	rdata2_var := (others =>'0');
+
+        -- else 
+     	else 
+      		rdata1_var := mem(to_integer(unsigned(raddr_1)));
+      		rdata2_var := mem(to_integer(unsigned(raddr_2)));
+      		if (we='1') then
+       			mem(to_integer(unsigned(waddr))) := wdata;
+      		end if;
+     	end if;
     end if;
     rdata_1 <= rdata1_var;
     rdata_2 <=rdata2_var;
     end process;
+
+
+
+
 end behavior;
 
 
