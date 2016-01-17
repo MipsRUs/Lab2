@@ -40,8 +40,7 @@ END instruction_memory;
 ARCHITECTURE behavior of instruction_memory is
 subtype word is std_logic_vector(31 DOWNTO 0);
 
--- 2^32 = 4294967296
-type mem is array (0 to 4294967295) of word;
+type mem is array (0 to 2**32) of word;
 begin
 	IR_process: process (write_enable, addr, instruction_out)
 	variable mem1:mem;
@@ -49,7 +48,7 @@ begin
 
 		-- will not write_enable when usign 'preload'
 		if(write_enable='1') then
-			mem1(to_integer(unsigned(addr)));
+			mem1(to_integer(unsigned(addr))) := instruction_out;
 		else
 			instruction_out <= mem1(to_integer(unsigned(addr)));
 		end if;
