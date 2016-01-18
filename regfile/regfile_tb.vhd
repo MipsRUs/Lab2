@@ -65,27 +65,8 @@ begin   --beh
 
     tb:process
       begin
-        raddr1 <= "010";
-        raddr2 <= "001";
-                  
-        rst_s <= '0';
-        we <= '0';
-        wait for 40 ns;
-        rst_s <= '1';
-        wait for 45 ns;
-        rst_s <= '0';
-        waddr <= "010";
-        wdata <= "00011111111110110001111111111010";
-        wait for 5 ns;
-        we <= '1';
-        wait for 55 ns;
-        waddr <= "001";
-        wdata <= "00000000000000000000000000111110";        
-        wait for 35 ns;
-        we <='0';
-        rst_s <= '1';
-        wait for 30 ns;
-
+        
+      -- code goes here
         
       end process;
   
