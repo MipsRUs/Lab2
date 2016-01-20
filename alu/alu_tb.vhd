@@ -50,12 +50,53 @@ begin
 	alu_tb: alu port map (Func_in=>Func_in_tb, A_in=>A_in_tb, B_in=>B_in_tb,
 			O_out=>O_out_tb, Branch_out=>Branch_out_tb, Jump_out=>Jump_out_tb); 
 
-	tb:process
+	tb:process(Func_in, A_in, B_in)
 	begin
-		
-		--add
+		--first try
+
 		A_in <= "00000000000000000000000000000001";
 		B_in <= "00000000000000000000000000000011";
+		
+		--add
+		Func_in <= "100000";
+		wait for 10 ns;
+		
+		--sub
+		Func_in <= "100010";
+		wait for 10 ns;
+		
+		--and
+		Func_in <= "100100";
+		wait for 10 ns;
+		
+		--or
+		Func_in <= "100101";
+		wait for 10 ns;
+		
+		--xor
+		Func_in <= "100110";
+		wait for 10 ns;
+		
+		--nor
+		Func_in <= "100111";
+		wait for 10 ns;
+		
+		--slt signed
+		Func_in <= "101000";
+		wait for 10 ns;
+		
+		--slt unsigned
+		Func_in <= "101001";
+		wait for 10 ns;
+		
+		
+		
+		--second try
+		
+		A_in <= "00000000000000000000000000010000";
+		B_in <= "00000000000000000000000000000001";
+		
+		--add
 		Func_in <= "100000";
 		wait for 10 ns;
 		
