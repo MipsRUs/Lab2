@@ -118,7 +118,11 @@ begin
 				end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
-
+			
+			when others =>
+				O_out < = zero
+				Branch_out <= '0';
+				Jump_out <= '0';
 
 
 		end case;
