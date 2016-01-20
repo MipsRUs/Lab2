@@ -38,6 +38,7 @@ ENTITY ram IS
 END ram;
 
 architecture behavior of ram is
+
 subtype word is std_logic_vector(NBIT-1 DOWNTO 0);
 
 -- change this depending of the size of the RAM
@@ -45,13 +46,13 @@ type memory is array (0 to (2**NSEL)-1) of word;
 
 begin
 	ram_process: process (clk, we, addr, dataI, dataO);
-	variable mem_var; memory;
+	variable mem_var;
 	begin
 	if(clk'event and clk='1') then
 		if(we='1') then
-			mem1(to_integer(unsigned(addr))) := dataI;
+			mem_var(to_integer(unsigned(addr))) := dataI;
 		else
-			dataO <= mem1(to_integer(unsigned(addr)));
+			dataO <= mem_var(to_integer(unsigned(addr)));
 		end if;
 	end if;
 
