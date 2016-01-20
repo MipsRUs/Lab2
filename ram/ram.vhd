@@ -39,7 +39,7 @@ END ram;
 
 architecture behavior of ram is
 
-subtype word is std_logic_vector(NBIT-1 DOWNTO 0);
+subtype word is std_logic_vector(31 DOWNTO 0);
 
 -- change this depending of the size of the RAM
 type memory is array (0 to (2**NSEL)-1) of word;
