@@ -55,6 +55,15 @@ architecture behavior of ram_tb is
 		ram_inst: ram PORT MAP(clk=>clk_tb, we=>we_tb, 
 			addr=>addr_tb, dataI=>dataI_tb, dataO=>dataO_tb);
 
+		clk_pc: process
+		begin
+			clk_tb <='0';
+			loop
+			wait for 10 ns;
+				clk_tb <= not clk_tb;
+			end loop;
+		end process; 
+
 		TB: PROCESS
 		BEGIN
 
