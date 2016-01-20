@@ -37,7 +37,14 @@ begin
 
 	begin
 	
-		-- code goes here
+		if(ref_clk'event and ref_clk='1') then
+			if(reset='1') then
+			end if;
+
+
+		end if;
+
+
 		
 	end process;
 
