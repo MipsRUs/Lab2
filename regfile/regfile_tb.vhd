@@ -60,7 +60,7 @@ begin
 		clk_tb <='0';
 		loop
 		wait for 10 ns;
-			clk_tb <= not clk;
+			clk_tb <= not clk_tb;
 		end loop;
 	end process;  
 
