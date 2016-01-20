@@ -77,12 +77,6 @@ begin
 	addr_out <= temp;														
 	end process;
 
-
-
--- SC 2016-01-15: commented out 
---adderio <= (std_logic_vector(to_unsigned((1), 32))) xor addr;
-
--- SC 2016-01-15: changed 'architecture' to 'logic'
 end logic;
 
 
