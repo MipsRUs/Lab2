@@ -44,25 +44,25 @@ begin
 		case Func_in is
 
 			-- ADD
-			when "100000" =>
+			when "100000" OR "100001" =>
 				O_out <= std_logic_vector(signed(A_in) + signed(B_in));
 				Branch_out <= '0';
 				Jump_out <= '0';
 				
-
+				
 			-- ADDi
-			when "100001" => 
+			--when "100001" => 
 
 
 			-- SUB
-			when "100010" =>
+			when "100010" OR "100011" =>
 				O_out <= std_logic_vector(signed(A_in) - signed(B_in));
 				Branch_out <= '0';
 				Jump_out <= '0';
 			
 
 			-- SUBi
-			when "100011" =>
+			--when "100011" =>
 				
 
 			-- AND
@@ -109,9 +109,6 @@ begin
 				Branch_out <= '0';
 				Jump_out <= '0';
 
-
-
-			
 
 
 		end case;
