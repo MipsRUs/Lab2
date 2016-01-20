@@ -47,8 +47,8 @@ END COMPONENT;
 	signal A_in_tb, B_in_tb, O_out_tb : std_logic_vector(31 downto 0);
 
 begin
-	alu_tb: alu port map (Func_in=>Func_in_tb, A_in=>A_in_tb, B_in=>B_in_tb,
-			O_out=>O_out_tb, Branch_out=>Branch_out_tb, Jump_out=>Jump_out_tb); 
+	alu_tb: alu port map (Func_in_tb,A_in_tb, B_in_tb,
+			O_out_tb, Branch_out_tb, Jump_out_tb); 
 
 	tb:process
 	begin
