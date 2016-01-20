@@ -23,17 +23,18 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-ENTITY ram IS port (
+ENTITY ram IS 
 	GENERIC (NBIT: INTEGER := 32;
 
 		-- 2**9=512
 		NSEL: INTEGER := 9);
 
-	clk : IN std_logic;
-	we : IN std_logic;
-	addr : IN std_logic_vector(NSEL-1 DOWNTO 0); 
-	dataI : IN std_logic_vector(NBIT-1 DOWNTO 0); 
-	dataO : OUT std_logic_vector(NBIT-1 DOWNTO 0));
+	port (
+		clk : IN std_logic;
+		we : IN std_logic;
+		addr : IN std_logic_vector(NSEL-1 DOWNTO 0); 
+		dataI : IN std_logic_vector(NBIT-1 DOWNTO 0); 
+		dataO : OUT std_logic_vector(NBIT-1 DOWNTO 0));
 END ram;
 
 architecture behavior of ram is
