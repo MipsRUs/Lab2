@@ -36,33 +36,43 @@ END alu ;
 
 architecture behavior of alu is
 
+
 begin
 	funct: process(Func_in, A_in, B_in)
 
+	variable one : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000001";
+	variable zero : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000000";
+
+	
 	begin
 	
 		case Func_in is
-
+		
 			-- ADD
-			when "100000" OR "100001" =>
+			when "100000" =>
 				O_out <= std_logic_vector(signed(A_in) + signed(B_in));
 				Branch_out <= '0';
 				Jump_out <= '0';
 				
 				
-			-- ADDi
-			--when "100001" => 
-
+			--ADDi
+			when "100001" => 
+				O_out <= std_logic_vector(signed(A_in) + signed(B_in));
+				Branch_out <= '0';
+				Jump_out <= '0';
 
 			-- SUB
-			when "100010" OR "100011" =>
+			when "100010" =>
 				O_out <= std_logic_vector(signed(A_in) - signed(B_in));
 				Branch_out <= '0';
 				Jump_out <= '0';
 			
 
 			-- SUBi
-			--when "100011" =>
+			when "100011" =>
+				O_out <= std_logic_vector(signed(A_in) - signed(B_in));
+				Branch_out <= '0';
+				Jump_out <= '0';
 				
 
 			-- AND
@@ -92,9 +102,9 @@ begin
 			-- SLT (signed)
 			when "101000" =>
 				if (signed(A_in) < signed(B_in)) then
-					O_out <= std_logic_vector(resize('1'), O_out'length);
+					O_out <= one;
 				else 
-					O_out <= std_logic_vector(resize('0'), O_out'length);
+					O_out <= zero;
 				end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
@@ -102,13 +112,17 @@ begin
 			-- SLT(unsigned)
 			when "101001" =>
 				if(unsigned(A_in) < unsigned(B_in)) then
-					O_out <= std_logic_vector(resize('1'), O_out'length);
+					O_out <= one;
 				else 
-					O_out <= std_logic_vector(resize('0'), O_out'length);
+					O_out <= zero;
 				end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
-
+			
+			when others =>
+				O_out <= zero;
+				Branch_out <= '0';
+				Jump_out <= '0';
 
 
 		end case;
