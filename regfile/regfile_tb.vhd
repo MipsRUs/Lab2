@@ -47,8 +47,8 @@ END COMPONENT;
 
 
 	signal clk_tb, rst_s_tb, we_tb: std_logic;  
-	signal raddr1_tb, raddr2_tb, waddr_tb: std_logic_vector(NSEL-1 downto 0);
-	signal rdata1_tb, rdata2_tb, wdata_tb : std_logic_vector(NBIT-1 downto 0);
+	signal raddr1_tb, raddr2_tb, waddr_tb: std_logic_vector(4 downto 0);
+	signal rdata1_tb, rdata2_tb, wdata_tb : std_logic_vector(31 downto 0);
 
 begin
 	regfile_tb: regfile port map (clk=>clk_tb, rst_s=>rst_s_tb, we=>we_tb, 
@@ -57,23 +57,23 @@ begin
 
 	clk_pc: process
 	begin
-		clk <='0';
+		clk_tb <='0';
 		loop
 		wait for 10 ns;
-			clk <= not clk;
+			clk_tb <= not clk;
 		end loop;
 	end process;  
 
 	tb:process
 	begin
 		-- resetting regfile
-		rst_s <= '1';
+		rst_s_tb <= '1';
 		wait for 50 ns;
 
 		-- setting register address 
 		raddr1_tb <= "01011";
 		raddr2_tb <= "11001";
-		rst_s <= '0';
+		rst_s_tb <= '0';
 
 		-- not writing to regfile, reading from it first
 		we_tb <= '0';
@@ -86,7 +86,7 @@ begin
 		wait for 10 ns;
 
 		-- writing to regfile
-		we <= '1';
+		we_tb <= '1';
 
 		wait for 50 ns;
 
