@@ -36,6 +36,9 @@ END alu ;
 
 architecture behavior of alu is
 
+variable one : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000001";
+variable zero : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000000";
+
 begin
 	funct: process(Func_in, A_in, B_in)
 
@@ -97,9 +100,9 @@ begin
 			-- SLT (signed)
 			when "101000" =>
 				if (signed(A_in) < signed(B_in)) then
-					O_out <= std_logic_vector(resize('1'), O_out'length);
+					O_out <= one;
 				else 
-					O_out <= std_logic_vector(resize('0'), O_out'length);
+					O_out <= zero;
 				end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
@@ -107,9 +110,9 @@ begin
 			-- SLT(unsigned)
 			when "101001" =>
 				if(unsigned(A_in) < unsigned(B_in)) then
-					O_out <= std_logic_vector(resize('1'), O_out'length);
+					O_out <= one;
 				else 
-					O_out <= std_logic_vector(resize('0'), O_out'length);
+					O_out <= zero;
 				end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
