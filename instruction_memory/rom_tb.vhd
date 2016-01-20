@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 -- Copyright MIPS_R_US 2016 - All Rights Reserved 
 --
--- File: instruction_memory_tb.vhd
+-- File: rom_tb.vhd
 -- Team: MIPS_R_US
 -- Members:
 -- 		Stefan Cao (ID# 79267250)
@@ -24,27 +24,31 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 
-entity instruction_memory_tb is 
-end instruction_memory_tb;
+entity rom_tb is 
+end rom_tb;
 
-architecture behavior of instruction_memory_tb is
-	COMPONENT instruction_memory
+architecture behavior of rom_tb is
+	COMPONENT rom
 	port(
+
+		-- will not use write_enable later, delete later
     	write_enable: in STD_LOGIC;
+
     	addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		instruction_out : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		dataIO : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 		);
 	end component;
 
 	-- inputs
+	-- will not have this later
 	signal write_enable_tb: STD_LOGIC;
-	signal addr_tb: STD_LOGIC_VECTOR(31 downto 0);
 
-	signal instruction_out_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
+	signal addr_tb: STD_LOGIC_VECTOR(31 downto 0);
+	signal rom_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
 
 
 begin
-	inst1: instruction_memory port map (write_enable=>write_enable_tb, addr=>addr_tb, instruction_out=>instruction_out_tb);
+	inst1: rom port map (write_enable=>write_enable_tb, addr=>addr_tb, rom=>rom_tb);
 
 	TB: PROCESS
 	BEGIN
@@ -52,17 +56,17 @@ begin
 		-- 'preloading like this for now'
 		write_enable_tb <= '1';
 		addr_tb <= (others=>'0');
-		instruction_out_tb <= "00000000000000000111111111111111";
+		rom_tb <= "00000000000000000111111111111111";
 
 		wait for 10 ns;
 
 		addr_tb <= "00000000000000000000000000000001";
-		instruction_out_tb <= "11111111111111111111111111111111";
+		rom_tb <= "11111111111111111111111111111111";
 
 		wait for 10 ns;
 
 		addr_tb <= "00000000000000000000000000000010";
-		instruction_out_tb <= "11111111111111111100000000000000";
+		rom_tb <= "11111111111111111100000000000000";
 
 		wait for 10 ns;
 

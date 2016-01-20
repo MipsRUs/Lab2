@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 -- Copyright MIPS_R_US 2016 - All Rights Reserved 
 --
--- File: instruction_memory.vhd
+-- File: rom.vhd
 -- Team: MIPS_R_US
 -- Members:
 -- 		Stefan Cao (ID# 79267250)
@@ -28,33 +28,35 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-ENTITY instruction_memory is
+ENTITY rom is
 	PORT(
 
 		-- write_enable is only used to test, instead of having to 
-		-- 		preload memory
+		-- 		preload memory, delete it later
 		write_enable : IN STD_LOGIC;
+
 		addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		instruction_out : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		dataIO : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 
 	);
-END instruction_memory;
+END rom;
 
-ARCHITECTURE behavior of instruction_memory is
+ARCHITECTURE behavior of rom is
 subtype word is std_logic_vector(31 DOWNTO 0);
 
 --should be 2**32-1 but get overflow
 type mem is array (0 to (2**16)-1) of word;
+
 begin
-	IR_process: process (write_enable, addr, instruction_out)
+	rom_process: process (write_enable, addr, dataIO)
 	variable mem1:mem;
 	begin
 
 		-- will not use write_enable when using 'preload'
 		if(write_enable='1') then
-			mem1(to_integer(unsigned(addr))) := instruction_out;
+			mem1(to_integer(unsigned(addr))) := dataIO;
 		else
-			instruction_out <= mem1(to_integer(unsigned(addr)));
+			dataIO <= mem1(to_integer(unsigned(addr)));
 		end if;
 	end process;
 end behavior;

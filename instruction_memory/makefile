@@ -17,12 +17,12 @@
 
 
 # change these parameters 
-PROJECT = instruction_memory
-INPUTFILE = instruction_memory.vhd
-TESTBENCH = instruction_memory_tb.vhd
-TOPMODULEENTITY = instruction_memory_tb
+PROJECT = rom
+INPUTFILE = rom.vhd
+TESTBENCH = rom_tb.vhd
+TOPMODULEENTITY = rom_tb
 TOPMODULEARCHITECTURE = behavior
-WORK_TOPMODULE = work.instruction_memory_tb
+WORK_TOPMODULE = work.rom_tb
 
 all: $(PROJECT)
 
