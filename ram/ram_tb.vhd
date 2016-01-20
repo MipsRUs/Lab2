@@ -58,7 +58,32 @@ architecture behavior of ram_tb is
 		TB: PROCESS
 		BEGIN
 
-		--test code goes here
+		addr_tb <= ('0','0','1','0','1',others=>'0');
+
+		-- write
+		we_tb <= '1';
+		wait for 10 ns;
+
+		-- don't write
+		we_tb <= '0';
+		wait for 10 ns;
+
+		-- write 
+		we_tb <='0';
+		dataI_tb <= "00000000111111110000000011111111";
+		wait for 10 ns;
+		addr_tb <= ('1','0','1','0','1',others =>'0');
+		wait for 10 ns;
+		dataI_tb <= "11111111111111110000000000000000";
+		wait for 10 ns;
+		
+		we_tb<='0';
+	
+		wait for 10 ns;
+		addr_tb <= ('0','0','1','0','1',others =>'0');
+		wait for 10 ns;
+		addr_tb <= ('1','0','1','0','1',others =>'0');
+		wait for 10 ns;
 
 		end process;
 end;

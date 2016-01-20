@@ -25,6 +25,8 @@ use ieee.numeric_std.all;
 
 ENTITY ram IS port (
 	GENERIC (NBIT: INTEGER := 32;
+
+		-- 2**9=512
 		NSEL: INTEGER := 9);
 
 	clk : IN std_logic;
@@ -38,11 +40,11 @@ architecture behavior of ram is
 subtype word is std_logic_vector(NBIT-1 DOWNTO 0);
 
 -- change this depending of the size of the RAM
-type mem is array (0 to (2**NSEL)-1) of word;
+type memory is array (0 to (2**NSEL)-1) of word;
 
 begin
 	ram_process: process (clk, we, addr, dataI, dataO)
-	variable mem1; mem;
+	variable mem_var; memory;
 	begin
 	if(clk'event and clk='1') then
 		if(we='1') then
