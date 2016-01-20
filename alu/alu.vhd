@@ -47,6 +47,11 @@ begin
 	begin
 	
 		case Func_in is
+		
+			when "000000" =>
+				O_out <= A_in;
+				Branch_out <= '0';
+				Jump_out <= '0';
 
 			-- ADD
 			when "100000" =>

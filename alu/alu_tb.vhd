@@ -127,7 +127,8 @@ begin
 		--slt unsigned
 		Func_in_tb <= "101001";
 		wait for 10 ns;
-		
+	
+	assert false report "finish" severity failure;
 	end process;
 
 end behavior;
