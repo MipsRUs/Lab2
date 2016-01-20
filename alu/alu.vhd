@@ -45,22 +45,25 @@ begin
 
 			-- ADD
 			when "100000" =>
+				O_out <= std_logic_vector(unsigned(A_in) + unsigned(B_in));
+				Branch_out <= '0';
+				Jump_out <= '0';
 				
 
 			-- ADDi
 			when "100001" => 
-				O_out <= std_logic_vector(unsigned(A_in) + unsigned(B_in));
-				Branch_out <= '0';
-				Jump_out <= '0';
+
 
 			-- SUB
 			when "100010" =>
+				O_out <= std_logic_vector(unsigned(A_in) - unsigned(B_in));
+				Branch_out <= '0';
+				Jump_out <= '0';
+			
 
 			-- SUBi
 			when "100011" =>
-				O_out <= std_logic_vector(unsigned(A_in) + unsigned(B_in));
-				Branch_out <= '0';
-				Jump_out <= '0';
+				
 
 			-- AND
 			when "100100" =>
