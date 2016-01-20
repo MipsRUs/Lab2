@@ -95,7 +95,7 @@ begin
 
 		wait for 50 ns;
 
-		we_tb < '0';
+		we_tb <= '0';
 
 		wait for 50 ns;
 
