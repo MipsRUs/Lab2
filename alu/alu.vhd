@@ -45,7 +45,7 @@ begin
 
 			-- ADD
 			when "100000" =>
-				O_out <= std_logic_vector(unsigned(A_in) + unsigned(B_in));
+				O_out <= std_logic_vector(signed(A_in) + signed(B_in));
 				Branch_out <= '0';
 				Jump_out <= '0';
 				
@@ -56,7 +56,7 @@ begin
 
 			-- SUB
 			when "100010" =>
-				O_out <= std_logic_vector(unsigned(A_in) - unsigned(B_in));
+				O_out <= std_logic_vector(signed(A_in) - signed(B_in));
 				Branch_out <= '0';
 				Jump_out <= '0';
 			
