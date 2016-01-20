@@ -43,7 +43,7 @@ subtype word is std_logic_vector(NBIT-1 DOWNTO 0);
 type memory is array (0 to (2**NSEL)-1) of word;
 
 begin
-	ram_process: process (clk, we, addr, dataI, dataO)
+	ram_process: process (clk, we, addr, dataI, dataO);
 	variable mem_var; memory;
 	begin
 	if(clk'event and clk='1') then
