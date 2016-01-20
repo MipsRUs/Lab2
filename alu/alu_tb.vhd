@@ -29,9 +29,6 @@ end alu_tb;
 architecture behavior of alu_tb is
 
 COMPONENT alu
-	GENERIC ( NBIT : INTEGER := 32;
-		NSEL : INTEGER := 5);
-
 	PORT (
 	Func_in : IN std_logic_vector (5 DOWNTO 0);
 	A_in : IN std_logic_vector (31 DOWNTO 0);
@@ -40,15 +37,14 @@ COMPONENT alu
 	Branch_out : OUT std_logic;
 	Jump_out : OUT std_logic
 	);
-END COMPONENT;
+END COMPONENT alu;
 
 	signal Branch_out_tb, Jump_out_tb: std_logic;
 	signal Func_in_tb: std_logic_vector(5 DOWNTO 0);  
 	signal A_in_tb, B_in_tb, O_out_tb : std_logic_vector(31 downto 0);
 
 begin
-	alu_tb: alu port map (Func_in_tb,A_in_tb, B_in_tb,
-			O_out_tb, Branch_out_tb, Jump_out_tb); 
+	alu_tb: alu port map (Func_in_tb,A_in_tb, B_in_tb, O_out_tb, Branch_out_tb, Jump_out_tb); 
 
 	tb:process
 	begin
