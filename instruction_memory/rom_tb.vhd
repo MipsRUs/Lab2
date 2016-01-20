@@ -44,11 +44,12 @@ architecture behavior of rom_tb is
 	signal write_enable_tb: STD_LOGIC;
 
 	signal addr_tb: STD_LOGIC_VECTOR(31 downto 0);
-	signal rom_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
+	signal dataIO_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
 
 
 begin
-	inst1: rom port map (write_enable=>write_enable_tb, addr=>addr_tb, rom=>rom_tb);
+	inst1: rom port map (write_enable=>write_enable_tb, addr=>addr_tb, 
+		dataIO=>dataIO_tb);
 
 	TB: PROCESS
 	BEGIN
@@ -56,17 +57,17 @@ begin
 		-- 'preloading like this for now'
 		write_enable_tb <= '1';
 		addr_tb <= (others=>'0');
-		rom_tb <= "00000000000000000111111111111111";
+		dataIO_tb <= "00000000000000000111111111111111";
 
 		wait for 10 ns;
 
 		addr_tb <= "00000000000000000000000000000001";
-		rom_tb <= "11111111111111111111111111111111";
+		dataIO_tb <= "11111111111111111111111111111111";
 
 		wait for 10 ns;
 
 		addr_tb <= "00000000000000000000000000000010";
-		rom_tb <= "11111111111111111100000000000000";
+		dataIO_tb <= "11111111111111111100000000000000";
 
 		wait for 10 ns;
 
