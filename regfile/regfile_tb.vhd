@@ -47,13 +47,13 @@ END COMPONENT;
 
 
 	signal clk_tb, rst_s_tb, we_tb: std_logic;  
-	signal raddr1_tb, raddr2_tb, waddr_tb: std_logic_vector(4 downto 0);
-	signal rdata1_tb, rdata2_tb, wdata_tb : std_logic_vector(31 downto 0);
+	signal raddr_1_tb, raddr_2_tb, waddr_tb: std_logic_vector(4 downto 0);
+	signal rdata_1_tb, rdata_2_tb, wdata_tb : std_logic_vector(31 downto 0);
 
 begin
 	regfile_tb: regfile port map (clk=>clk_tb, rst_s=>rst_s_tb, we=>we_tb, 
-			raddr1=>raddr1_tb, raddr2=>raddr2_tb, waddr=>waddr_tb, 
-			rdata1=>rdata1_tb, rdata2=>rdata2_tb, wdata=>wdata_tb);
+			raddr_1=>raddr_1_tb, raddr_2=>raddr_2_tb, waddr=>waddr_tb, 
+			rdata_1=>rdata_1_tb, rdata_2=>rdata_2_tb, wdata=>wdata_tb);
 
 	clk_pc: process
 	begin
@@ -71,8 +71,8 @@ begin
 		wait for 50 ns;
 
 		-- setting register address 
-		raddr1_tb <= "01011";
-		raddr2_tb <= "11001";
+		raddr_1_tb <= "01011";
+		raddr_2_tb <= "11001";
 		rst_s_tb <= '0';
 
 		-- not writing to regfile, reading from it first
