@@ -44,9 +44,9 @@ architecture behavior of ram_tb is
 	-- inputs
 	signal clk_tb: std_logic;
 	signal we_tb: std_logic;
-	signal addr_tb: std_logic_vector(NSEL-1 DOWNTO 0);
-	signal dataI_tb: std_logic_vector(NBIT-1 DOWNTO 0);
-	signal dataO_tb: std_logic_vector(NBIT-1 DOWNTO 0);
+	signal addr_tb: std_logic_vector(8 DOWNTO 0);
+	signal dataI_tb: std_logic_vector(31 DOWNTO 0);
+	signal dataO_tb: std_logic_vector(31 DOWNTO 0);
 
 
 
