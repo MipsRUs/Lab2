@@ -44,7 +44,7 @@ architecture behavior of rom_tb is
 	signal write_enable_tb: STD_LOGIC;
 
 	signal addr_tb: STD_LOGIC_VECTOR(31 downto 0);
-	signal rom_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
+	signal dataIO_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
 
 
 begin
