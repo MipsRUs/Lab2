@@ -48,11 +48,6 @@ begin
 	
 		case Func_in is
 		
-			when "000000" =>
-				O_out <= A_in;
-				Branch_out <= '0';
-				Jump_out <= '0';
-
 			-- ADD
 			when "100000" =>
 				O_out <= std_logic_vector(signed(A_in) + signed(B_in));
