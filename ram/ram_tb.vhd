@@ -53,7 +53,7 @@ architecture behavior of ram_tb is
 	BEGIN
 
 		ram_inst: ram PORT MAP(clk=>clk_tb, we=>we_tb, 
-			addr=>addr_tb, dataI=>dataI_tb, dataO_tb=>dataO_tb);
+			addr=>addr_tb, dataI=>dataI_tb, dataO=>dataO_tb);
 
 		TB: PROCESS
 		BEGIN
