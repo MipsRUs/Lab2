@@ -36,12 +36,14 @@ END alu ;
 
 architecture behavior of alu is
 
-variable one : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000001";
-variable zero : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000000";
 
 begin
 	funct: process(Func_in, A_in, B_in)
 
+	variable one : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000001";
+	variable zero : std_logic_vector (31 DOWNTO 0) := "00000000000000000000000000000000";
+
+	
 	begin
 	
 		case Func_in is
