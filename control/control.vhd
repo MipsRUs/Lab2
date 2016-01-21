@@ -57,6 +57,7 @@ END control;
 architecture behavior of control is
 
 begin
+
 	funct: process(clk, instruction)
 
 
@@ -108,6 +109,7 @@ begin
 				MemWrite <= '1';
 				MemToReg <= '1';
 				ALUSrc <= '1'; 
+				
 			end if;
 
 		end if;
