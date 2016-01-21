@@ -44,7 +44,7 @@ ENTITY control IS
 		MemWrite: OUT std_logic;
 
 		-- selecting output data from memory OR ALU result
-		MemToReg: OUT std_logic
+		MemToReg: OUT std_logic;
 
 		-- to regfile
 		rs: OUT std_logic_vector(4 DOWNTO 0);
