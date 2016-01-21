@@ -37,7 +37,7 @@ COMPONENT alu
 	Branch_out : OUT std_logic;
 	Jump_out : OUT std_logic
 	);
-END COMPONENT alu;
+END COMPONENT;
 
 	signal Branch_out_tb, Jump_out_tb: std_logic;
 	signal Func_in_tb: std_logic_vector(5 DOWNTO 0);  
