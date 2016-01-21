@@ -46,7 +46,7 @@ architecture behavior of mux_tb is
 
 	BEGIN
 
-		mux_inst: mux PORT MAP(in0=>in0_tb, in1_tb=>in1_tb, sel=>sel_tb, 
+		mux_inst: mux PORT MAP(in0=>in0_tb, in1=>in1_tb, sel=>sel_tb, 
 			outb=>outb_tb);
 
 		TB: PROCESS
