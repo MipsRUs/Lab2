@@ -49,7 +49,7 @@ ENTITY control IS
 		-- to regfile
 		rs: OUT std_logic_vector(4 DOWNTO 0);
 		rt: OUT std_logic_vector(4 DOWNTO 0);
-		rd: OUT std_logic_vector(4 DOWNTO 0)
+		rd: OUT std_logic_vector(4 DOWNTO 0);
 		imm: OUT std_logic_vector(15 DOWNTO 0)
 	);
 END control;
@@ -109,7 +109,7 @@ begin
 				MemWrite <= '1';
 				MemToReg <= '1';
 				ALUSrc <= '1'; 
-				
+
 			end if;
 
 		end if;
