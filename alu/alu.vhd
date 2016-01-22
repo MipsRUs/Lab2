@@ -81,11 +81,11 @@ begin
 			when "100011" =>
 				--O_out <= std_logic_vector(signed(A_in) - signed(B_in));
 				if (A_in >= Bin) then
-					output1 <= std_logic_vector(unsigned(A_in) - unsigned(B_in));
+					O_out <= std_logic_vector(unsigned(A_in) - unsigned(B_in));
 					--overflow   <= '0';
 					--equal <= '0';
 						else
-					output1 <= std_logic_vector(unsigned(B_in) - unsigned(A_in));
+					O_out <= std_logic_vector(unsigned(B_in) - unsigned(A_in));
 					--overflow   <= '1';
 					--equal <= '0';
 						end if;
