@@ -89,16 +89,15 @@ component control
 		imm: OUT std_logic_vector(15 DOWNTO 0)
 	);
 end component;
+
 -- rom: instruction memory
 component rom
 	PORT(
-		-- write_enable is only used to test, instead of having to 
-		-- 		preload memory, delete it later
-		write_enable : IN STD_LOGIC;
 		addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
 		dataIO : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 end component;
+
 -- mux
 component mux
 	port( 
@@ -108,6 +107,7 @@ component mux
 		outb: out std_logic_vector(31 downto 0)
 	);
 end component;
+
 -- pc
 component pc
 	PORT (
@@ -119,6 +119,7 @@ component pc
 			addr_out: out STD_LOGIC_VECtOR(31 DOWNTO 0)
 	);
 end component;
+
 -- ram: data memory
 component ram
 	port (
@@ -129,6 +130,7 @@ component ram
 		dataO : OUT std_logic_vector(31 DOWNTO 0)
 	);
 end component;
+
 -- regfile
 component regfile
 	PORT (
@@ -143,6 +145,7 @@ component regfile
 		wdata : IN std_logic_vector (31 DOWNTO 0) -- write data 1
 	);
 end component;
+
 -- sign extension
 component sign_extension
 	PORT(
@@ -150,13 +153,14 @@ component sign_extension
 		sign_extension_out : OUT std_logic_vector(31 DOWNTO 0)
 	);
 end component;
+
 --------------signals------------------------
 ------------------pc signal------------------
-signal pcbranch:			std_logic;
+signal pcbranch:			std_logic := '0';	-- set pcbranch to 0 because not branching
 signal pcadder:				std_logic_vector (31 DOWNTO 0);
 signal pcadderout:			std_logic_vector (31 DOWNTO 0);
 ----------------rom signal-------------------
-signal wetest:				std_logic;
+
 ---------------control signals---------------
 signal cinstruction:		std_logic_vector (31 DOWNTO 0);
 signal cregwrite:			std_logic;
@@ -183,8 +187,8 @@ signal mux2out:				std_logic_vector (31 DOWNTO 0);
 -------------------begin--------------------- 
 begin
 	pcx:			pc port map (clk=>ref_clk, rst=>reset, isBranch=>pcbranch, addr_in=>pcadder, addr_out=>pcadderout);
-	--write_enable is only for test--
-	romx:			rom port map (write_enable=>wetest, addr=>pcadderout, dataIO=>cinstruction);
+
+	romx:			rom port map (addr=>pcadderout, dataIO=>cinstruction);
 	controlx:		control port map (clk=>ref_clk, instruction=>cinstruction, RegWrite=>cregwrite, ALUControl=>calucontrol, ALUSrc=>calusrc, MemWrite=>cmemwrite, MemToReg=>cmemtoreg, rs=>crs, rt=>crt, rd=>crd, imm=>cimm);
 	signextensionx:	sign_extension port map (immediate=>cimm, sign_extension_out=>signextendout);
 	regfilex:		regfile port map (clk=>ref_clk, rst_s=>reset, we=>cregwrite, raddr_1=>crs, raddr_2=>crt, waddr=>crd, rdata_1=>operanda, rdata_2=>mux1ina, wdata=>mux2out);
