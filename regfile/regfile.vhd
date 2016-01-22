@@ -24,35 +24,36 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 ENTITY regfile IS
-	GENERIC (
-		NBIT: INTEGER := 32;
+	-- TH commented generic for processor
+	--GENERIC (
+	--	NBIT: INTEGER := 32;
 
 		-- NSEL may be changes, not sure how many registers there are
-		NSEL : INTEGER := 5);
+	--	NSEL : INTEGER := 5);
 
 	PORT (
 		clk : IN std_logic ;
 		rst_s : IN std_logic ; 
 		we : IN std_logic ; -- write enable
-		raddr_1 : IN std_logic_vector (NSEL-1 DOWNTO 0); -- read address 1
-		raddr_2 : IN std_logic_vector (NSEL-1 DOWNTO 0); -- read address 2
-		waddr : IN std_logic_vector (NSEL-1 DOWNTO 0); -- write address
-		rdata_1 : OUT std_logic_vector (NBIT-1 DOWNTO 0); -- read data 1
-		rdata_2 : OUT std_logic_vector (NBIT-1 DOWNTO 0); -- read data 2
-		wdata : IN std_logic_vector (NBIT-1 DOWNTO 0) -- write data 1
+		raddr_1 : IN std_logic_vector (4 DOWNTO 0); -- read address 1
+		raddr_2 : IN std_logic_vector (4 DOWNTO 0); -- read address 2
+		waddr : IN std_logic_vector (4 DOWNTO 0); -- write address
+		rdata_1 : OUT std_logic_vector (31 DOWNTO 0); -- read data 1
+		rdata_2 : OUT std_logic_vector (31 DOWNTO 0); -- read data 2
+		wdata : IN std_logic_vector (31 DOWNTO 0) -- write data 1
 	);
 END regfile ;
 
 architecture behavior of regfile is
 
-subtype word is std_logic_vector(NBIT-1 downto 0);
-type memory is array(0 to 2**NSEL-1) of word;
+subtype word is std_logic_vector(31 downto 0);
+type memory is array(0 to 2**4) of word;
 
 
 begin
 	funct: process(clk)
 	variable mem_var:memory;
-	variable rdata1_var, rdata2_var : STD_LOGIC_VECTOR(NBIT-1 downto 0);
+	variable rdata1_var, rdata2_var : STD_LOGIC_VECTOR(31 downto 0);
 
 	begin
 	if(clk'event and clk='1') then
@@ -61,7 +62,7 @@ begin
 		if(rst_s='1') then
 
 			-- going through every regfile
-			reg_loop: for i in 0 to 2**NSEL-1 loop
+			reg_loop: for i in 0 to 2**4 loop
 				mem_var(i) := (others=>'0');
 			end loop; 
 

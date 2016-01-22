@@ -25,7 +25,7 @@ use ieee.numeric_std.all;
 
 entity sign_extension is
 	PORT(
-		immediate : IN std_logic_vector(14 DOWNTO 0);
+		immediate : IN std_logic_vector(15 DOWNTO 0);
 		sign_extension_out : OUT std_logic_vector(31 DOWNTO 0)
 	);
 end sign_extension;

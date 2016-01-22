@@ -35,14 +35,8 @@ ENTITY pc IS
 				STEP: INTEGER := 1);
 	PORT (clk: in STD_LOGIC;
       		rst: in STD_LOGIC;
-
       		-- this is set to '1' if there is a branch
       		isBranch: in STD_LOGIC;  
- 
- 			-- SC 2016-01-15: commented out 	     
-   			--addr: inout STD_LOGIC_VECTOR(31 DOWNTO 0);
-  			--adderio: inout STD_LOGIC_VECTOR(31 DOWNTO 0));
-	
 			addr_in: in STD_LOGIC_VECTOR(31 DOWNTO 0);
 			addr_out: out STD_LOGIC_VECtOR(31 DOWNTO 0)
 	);

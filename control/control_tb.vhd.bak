@@ -28,7 +28,7 @@ end control_tb;
 
 architecture behavior of control_tb is
 
-COMPONENT control
+COMPONENT processor
 	PORT (
 		clk : IN std_logic;
 		instruction : IN std_logic_vector (31 DOWNTO 0);

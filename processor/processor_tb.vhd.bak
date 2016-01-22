@@ -62,11 +62,11 @@ TB: PROCESS
 	BEGIN
 		
 		--resetting to 0's
-		reset_tb <= '1';
+		rst_tb <= '1';
 
 		wait for 10 ns;
 		
-		reset_tb <= '0';
+		rst_tb <= '0';
 		wait for 100 ns;
 end process;
 ---------------------------------------------------		
