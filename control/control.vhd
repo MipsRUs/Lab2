@@ -84,7 +84,7 @@ begin
 				MemToReg <= '0';
 
 				-- i-type
-				if((instruction(5 DOWNTO 0)="100001" OR instruction(5 DOWNTO 0))) then
+				if((instruction(5 DOWNTO 0)="100001") OR (instruction(5 DOWNTO 0))) then
 					ALUSrc <= '1';
 
 				-- r-type
