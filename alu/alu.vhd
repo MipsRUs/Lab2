@@ -63,14 +63,32 @@ begin
 
 			-- SUB
 			when "100010" =>
-				O_out <= std_logic_vector(signed(A_in) - signed(B_in));
+				--O_out <= std_logic_vector(signed(A_in) - signed(B_in));
+				if (A >= B) then
+					output1 <= std_logic_vector(unsigned(A) - unsigned(B));
+					--overflow   <= '0';
+					--equal <= '0';
+						else
+					output1 <= std_logic_vector(unsigned(B) - unsigned(A));
+					--overflow   <= '1';
+					--equal <= '0';
+						end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
 			
 
 			-- SUBi
 			when "100011" =>
-				O_out <= std_logic_vector(signed(A_in) - signed(B_in));
+				--O_out <= std_logic_vector(signed(A_in) - signed(B_in));
+				if (A >= B) then
+					output1 <= std_logic_vector(unsigned(A) - unsigned(B));
+					--overflow   <= '0';
+					--equal <= '0';
+						else
+					output1 <= std_logic_vector(unsigned(B) - unsigned(A));
+					--overflow   <= '1';
+					--equal <= '0';
+						end if;
 				Branch_out <= '0';
 				Jump_out <= '0';
 				
