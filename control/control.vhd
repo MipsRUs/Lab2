@@ -97,18 +97,20 @@ begin
 				
 
 			-- Load instruction
-			else if (instruction(31 DOWNTO 26)="100011") then 
+			elsif (instruction(31 DOWNTO 26)="100011") then 
 				ALUControl <= "100000";
 				MemWrite <= '0';
 				MemToReg <= '1';
 				ALUSrc <= '1'; 
 
 			-- Store instruction
-			else if(instruction(31 DOWNTO 26)="101011") then
+			elsif(instruction(31 DOWNTO 26)="101011") then
 				ALUControl <= "100000";	
 				MemWrite <= '1';
 				MemToReg <= '1';
 				ALUSrc <= '1'; 
+
+
 
 			end if;
 
