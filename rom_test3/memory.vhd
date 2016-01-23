@@ -1,5 +1,6 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all; 
+use IEEE.std_logic_textio.all;
 use STD.TEXTIO.all;
 use IEEE.numeric_std.all;
 
@@ -12,8 +13,9 @@ end;
 
 architecture behave of imem is
 begin
-process is
-file mem_file: TEXT;
+	read_file:
+	process 
+	file mem_file: TEXT;
 variable L: line;
 variable ch: character;
 variable i, index, result: integer;
