@@ -157,7 +157,7 @@ end component;
 --------------signals------------------------
 ------------------pc signal------------------
 signal pcbranch:			std_logic := '0';	-- set pcbranch to 0 because not branching
-signal pcadder:				std_logic_vector (31 DOWNTO 0): (others=>'0');
+signal pcadder:				std_logic_vector (31 DOWNTO 0) := (others=>'0');
 signal pcadderout:			std_logic_vector (31 DOWNTO 0);
 ----------------rom signal-------------------
 
