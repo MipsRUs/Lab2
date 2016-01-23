@@ -74,7 +74,7 @@ begin  -- test of file_io
 
   read_file:
     process    -- read file_io.in (one time at start of simulation)
-      file my_input : TEXT open READ_MODE is "file_io.in";
+      file my_input : TEXT open READ_MODE is "imem.h";
       variable my_line : LINE;
       variable my_input_line : LINE;
     begin
