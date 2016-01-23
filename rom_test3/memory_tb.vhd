@@ -37,7 +37,7 @@ architecture behavior of imem_tb is
 
 
 	signal a_tb: STD_LOGIC_VECTOR(5 downto 0);
-	signal rdtb: STD_LOGIC_VECTOR(31 DOWNTO 0);
+	signal rd_tb: STD_LOGIC_VECTOR(31 DOWNTO 0);
 
 
 begin
@@ -47,16 +47,16 @@ begin
 	TB: PROCESS
 	BEGIN
 		
-		a_tb <= "00000000000000000000000000000000";
+		a_tb <= "000000";
 		wait for 10 ns;
 
-		a_tb <= "00000000000000000000000000000001";
+		a_tb <= "000001";
 		wait for 10 ns;
 
-		a_tb <= "00000000000000000000000000000010";
+		a_tb <= "000010";
 		wait for 10 ns;
 
-		a_tb <= "00000000000000000000000000000011";
+		a_tb <= "000011";
 
 
 		wait for 10 ns;

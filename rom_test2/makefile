@@ -18,21 +18,19 @@
 
 # change these parameters 
 PROJECT = rom
-INPUTFILE = rom.vhd
-TESTBENCH = rom_tb.vhd
-TOPMODULEENTITY = rom_tb
-TOPMODULEARCHITECTURE = behavior
-WORK_TOPMODULE = work.rom_tb
+TB_TOP = rom_tb
+TB_TOP_OPT = rom_tb_opt
+
 
 all: $(PROJECT)
 
 $(PROJECT): 
-	mkdir work
-	ncvhdl -messages $(INPUTFILE)
-	ncvhdl -messages $(TESTBENCH)
-	ncelab $(TOPMODULEENTITY):$(TOPMODULEARCHITECTURE) -access +r -messages
-	ncsim $(WORK_TOPMODULE) -input run.cmd
-
+	vcom -64 -f rtl.cfg
+	vlog -64 -sv -f tb.cfg
+	vopt -64 $(TB_TOP) +acc=mpr -o $(TB_TOP_OPT) 
+	vsim -64 -l simulation.log -do sim.do -c $(TB_TOP_OPT)
+	vsim -view waveform.wlf
+	
 clean:
 	rm -rf work
 	rm *.log
