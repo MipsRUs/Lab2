@@ -94,7 +94,7 @@ end component;
 component rom
 	PORT(
 		addr : IN STD_LOGIC_VECTOR(31 DOWNTO 0);
-		dataIO : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+		dataOut : INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	);
 end component;
 
@@ -188,7 +188,7 @@ signal mux2out:				std_logic_vector (31 DOWNTO 0);
 begin
 	pcx:			pc port map (clk=>ref_clk, rst=>reset, isBranch=>pcbranch, addr_in=>pcadder, addr_out=>pcadderout);
 
-	romx:			rom port map (addr=>pcadderout, dataIO=>cinstruction);
+	romx:			rom port map (addr=>pcadderout, dataOut=>cinstruction);
 	controlx:		control port map (clk=>ref_clk, instruction=>cinstruction, RegWrite=>cregwrite, ALUControl=>calucontrol, ALUSrc=>calusrc, MemWrite=>cmemwrite, MemToReg=>cmemtoreg, rs=>crs, rt=>crt, rd=>crd, imm=>cimm);
 	signextensionx:	sign_extension port map (immediate=>cimm, sign_extension_out=>signextendout);
 	regfilex:		regfile port map (clk=>ref_clk, rst_s=>reset, we=>cregwrite, raddr_1=>crs, raddr_2=>crt, waddr=>crd, rdata_1=>operanda, rdata_2=>mux1ina, wdata=>mux2out);
