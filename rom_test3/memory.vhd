@@ -1,7 +1,9 @@
 library IEEE;
 use IEEE.STD_LOGIC_1164.all; 
 use STD.TEXTIO.all;
-use IEEE.NUMERIC_STD_UNSIGNED.all;
+use IEEE.numeric_std.all;
+
+--use IEEE.NUMERIC_STD_UNSIGNED.all;
 
 entity imem is -- instruction memory
 port(a: in STD_LOGIC_VECTOR(5 downto 0);
