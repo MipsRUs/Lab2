@@ -8,8 +8,8 @@ processor L1(
          );
 
 always begin
-	#10 ref_clk = 1;
-	#10 ref_clk = 0;
+	#50 ref_clk = 1;
+	#50 ref_clk = 0;
 end
 
 initial begin
@@ -17,7 +17,7 @@ initial begin
 	reset = 1;
 	#100;
 	reset = 0;
-	#10000;
+	#100000;
 
 end
 endmodule
