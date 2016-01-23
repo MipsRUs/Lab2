@@ -1,20 +1,24 @@
-module processortb;
-/* reg is for INPUT, wire is for OUTPUT*/
-reg ref_clk_tb;
-reg reset_tb;
-processor L1 (.ref_clk(ref_clk_tb),.reset(reset_tb));
+module processor_tb;
+  logic ref_clk;
+  logic reset;
+  
+processor L1(
+          .ref_clk(ref_clk)
+         ,.reset(reset)
+         );
 
-initial
-begin
-
-	ref_clk_tb = 1'b0;
-	reset_tb = 1'b0;
-	forever #10 ref_clk_tb <= ~ref_clk_tb; 
-
+always begin
+	#10 ref_clk = 1;
+	#10 ref_clk = 0;
 end
-always
-	begin
-	#200 reset_tb <= 1'b0;
+
+initial begin
+
+	reset = 1;
+	#10;
+	reset = 0;
+	#10000;
 
 end
 endmodule
+    

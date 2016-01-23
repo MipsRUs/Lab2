@@ -47,14 +47,13 @@ END regfile ;
 architecture behavior of regfile is
 
 subtype word is std_logic_vector(31 downto 0);
--- TH type memory is array(0 to 2**4) of word;
-type memory is array(0 to 2**5) of word;
+type memory is array(0 to 2**4) of word;
+
 
 begin
 	funct: process(clk)
 	variable mem_var:memory;
-	variable rdata1_var:STD_LOGIC_VECTOR(31 downto 0);
-	variable rdata2_var: STD_LOGIC_VECTOR(31 downto 0);
+	variable rdata1_var, rdata2_var : STD_LOGIC_VECTOR(31 downto 0);
 
 	begin
 	if(clk'event and clk='1') then
@@ -63,8 +62,7 @@ begin
 		if(rst_s='1') then
 
 			-- going through every regfile
-			-- TH reg_loop: for i in 0 to 2**4 loop
-			reg_loop: for i in 0 to 2**5 loop
+			reg_loop: for i in 0 to 2**4 loop
 				mem_var(i) := (others=>'0');
 			end loop; 
 

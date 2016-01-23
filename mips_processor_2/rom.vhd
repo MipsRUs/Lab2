@@ -7,7 +7,7 @@ port(
 	addr: IN STD_LOGIC_VECTOR(31 downto 0); 
 --template-> a: in STD_LOGIC_VECTOR(5 downto 0);
 --     	    rd: out STD_LOGIC_VECTOR(31 downto 0)
-	dataIO: INOUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	dataOut: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 );
 end rom;
 architecture behavior of rom is
@@ -25,7 +25,7 @@ mem(i) := (others => '0');
 end loop;
 
 index := 0;
-FILE_OPEN (mem_file, "memheader.h", READ_MODE);
+FILE_OPEN (mem_file, "imem.h", READ_MODE);
 while not endfile(mem_file) loop
 readline(mem_file, L);
 result := 0;
@@ -45,7 +45,7 @@ index := index + 1;
 end loop; -- end while
 ------------------------new loop-----------------------------
 loop
-dataIO<= mem(to_integer(addr));
+dataOut<= mem(to_integer(addr));
 wait on addr;
 end loop;
 end process;
