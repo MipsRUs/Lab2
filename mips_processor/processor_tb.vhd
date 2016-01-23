@@ -67,7 +67,7 @@ TB: PROCESS
 		wait for 10 ns;
 		
 		reset_tb <= '0';
-		wait for 100 ns;
+		wait for 100 ms;
 end process;
 ---------------------------------------------------		
 	
