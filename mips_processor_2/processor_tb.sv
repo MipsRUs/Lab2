@@ -15,7 +15,7 @@ end
 initial begin
 
 	reset = 1;
-	#10;
+	#50;
 	reset = 0;
 	#10000;
 
