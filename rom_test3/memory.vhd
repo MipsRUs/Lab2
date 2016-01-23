@@ -15,7 +15,7 @@ architecture behave of imem is
 begin
 	read_file:
 	process 
-		file mem_file: TEXT;
+		file mem_file: TEXT open READ_MODE is "imem.h";
 		variable L: line;
 		variable ch: character;
 		variable i, index, result: integer;
@@ -28,7 +28,8 @@ mem(i) := (others => '0');
 end loop;
 
 index := 0;
-FILE_OPEN (mem_file, "imem.h", READ_MODE);
+
+--FILE_OPEN (mem_file, "imem.h", READ_MODE);
 while not endfile(mem_file) loop
 readline(mem_file, L);
 result := 0;
