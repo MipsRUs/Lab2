@@ -39,7 +39,7 @@ for i in 1 to 8 loop
 	result := character'pos(ch) - character'pos('0');
 	elsif 'a' <= ch and ch <= 'f' then
 	result := character'pos(ch) - character'pos('a')+10;
-	else report "Format error on line" & integer'image(index) severity error;
+	--else report "Format error on line" & integer'image(index) severity error;
 	end if;
 	mem(index)(35-i*4 downto 32-i*4) := to_std_logic_vector(result,4);
 	end loop;
