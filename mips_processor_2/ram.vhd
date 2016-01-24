@@ -49,7 +49,7 @@ begin
 	ram_process: process (clk, we, addr, dataI)
 	variable mem_var:memory;
 	begin
-	if(clk'event and clk='0') then
+	if(clk'event and clk='1') then
 		if(we='1') then
 			mem_var(to_integer(unsigned(addr))) := dataI;
 		else
