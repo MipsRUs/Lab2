@@ -280,9 +280,9 @@ begin
 						Branch_out=>alubranchout, Jump_out=>alujumpout);
 
 	ramx:			ram port map (clk=>ref_clk, we=>cmemwrite, 
-
 						addr=>aluresult, dataI=>mux1ina, dataO=>mux2ina);
-	mux2x:			mux port map (in0=>mux2ina, in1=>aluresult, 
+	
+	mux2x:			mux port map (in0=>aluresult, in1=>mux2ina, 
 						sel=>cmemtoreg, outb=>mux2out);	
 	
 end behavior;
