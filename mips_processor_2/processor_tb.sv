@@ -25,52 +25,52 @@ initial begin
 
 	ref_clk = 0;
 	reset = 1;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10
+	#50
 	ref_clk = 0;
 	reset = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 	ref_clk = 1;
-	#10;
+	#50;
 	ref_clk = 0;
-	#10;
+	#50;
 
 
 
