@@ -43,7 +43,7 @@ architecture behavior of ram is
 subtype word is std_logic_vector(31 DOWNTO 0);
 
 -- change this depending of the size of the RAM
-type memory is array (0 to (2**9)-1) of word;
+type memory is array (0 to (2**14)-1) of word;
 
 begin
 	ram_process: process (clk, we, addr, dataI)

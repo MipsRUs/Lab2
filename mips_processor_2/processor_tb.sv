@@ -1,4 +1,7 @@
 module processor_tb;
+	
+  timeunit 1ns;
+
   logic ref_clk;
   logic reset;
   
@@ -7,76 +10,17 @@ processor L1(
          ,.reset(reset)
          );
 
-//always begin
-	//#50 ref_clk = 1;
-	//#50 ref_clk = 0;
-//end
+always begin
+	#5 ref_clk = 1;
+	#5 ref_clk = 0;
+end
 
 initial begin
 
-
-	//ref_clk = 1'b0;
-	//forever #50 ref_clk = ~ref_clk;
-
-
-	//reset = 1;
-	//#100;
-	//reset = 0;
-
-	ref_clk = 0;
 	reset = 1;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50
-	ref_clk = 0;
+	#20;
 	reset = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-	ref_clk = 1;
-	#50;
-	ref_clk = 0;
-	#50;
-
-
-
-
-
-
+	#2000;
 
 
 end
