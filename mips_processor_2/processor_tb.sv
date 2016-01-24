@@ -8,8 +8,8 @@ processor L1(
          );
 
 always begin
-	#50 ref_clk = 1;
-	#50 ref_clk = 0;
+	#20 ref_clk = 1;
+	#20 ref_clk = 0;
 end
 
 initial begin
