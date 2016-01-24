@@ -90,7 +90,7 @@ use ieee.numeric_std.all;
 
 ENTITY regfile IS
 GENERIC ( NBIT : INTEGER := 32;
-NSEL : INTEGER := 3);
+NSEL : INTEGER := 5);
 PORT (
 clk : IN std_logic ;
 rst_s : IN std_logic ; -- synchronous reset
