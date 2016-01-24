@@ -15,9 +15,9 @@ end
 initial begin
 
 	reset = 1;
-	#100;
+	#200;
 	reset = 0;
-	#100000;
+	#1000000;
 
 end
 endmodule
