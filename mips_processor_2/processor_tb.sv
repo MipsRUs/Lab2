@@ -7,12 +7,15 @@ processor L1(
          ,.reset(reset)
          );
 
-always begin
-	#50 ref_clk = 1;
-	#50 ref_clk = 0;
-end
+//always begin
+	//#50 ref_clk = 1;
+	//#50 ref_clk = 0;
+//end
 
 initial begin
+	ref_clk = 1'b0;
+	forever #50 ref_clk = ~ref_clk;
+	
 
 	reset = 1;
 	#100;
