@@ -10,7 +10,8 @@
 --		Linda Vang (ID# 71434490)
 --
 -- Description:
---		This is a RAM
+--		This is a mux/ 2-bit selecter. Two muxes are being used in this 
+--		processor implementation
 --
 -- History:
 -- 		Date		Update Description			Developer

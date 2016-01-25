@@ -10,7 +10,7 @@
 --		Linda Vang (ID# 71434490)
 --
 -- Description:
---		This is a register file
+--		This is a a single cycle processor
 --
 -- History:
 -- 		Date		Update Description			Developer

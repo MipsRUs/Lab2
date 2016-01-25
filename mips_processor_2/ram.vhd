@@ -43,6 +43,8 @@ architecture behavior of ram is
 subtype word is std_logic_vector(31 DOWNTO 0);
 
 -- change this depending of the size of the RAM
+-- the ram is supposed to be 32 by 2**9, but because of instructions giving 
+-- 		overflow, we changed it to 2**14 to not deal with this complications
 type memory is array (0 to (2**14)-1) of word;
 
 begin

@@ -1,15 +1,36 @@
+-------------------------------------------------------------------
+-- Copyright MIPS_R_US 2016 - All Rights Reserved 
+--
+-- File: rom.vhd
+-- Team: MIPS_R_US
+-- Members:
+-- 		Stefan Cao (ID# 79267250)
+--		Ting-Yi Huang (ID# 58106363)
+--		Nehme Saikali (ID# 89201494)
+--		Linda Vang (ID# 71434490)
+--
+-- Description:
+--		This is a rom used as an instruction memory
+--
+-- History:
+-- 		Date		Update Description			Developer
+--	-----------   ----------------------   	  -------------
+--	1/19/2016		Created						TH, NS, LV, SC
+--
+-------------------------------------------------------------------
+
 library IEEE;
 use IEEE.STD_LOGIC_1164.all; 
 use STD.TEXTIO.all;
 use IEEE.NUMERIC_STD_UNSIGNED.all;
+
 entity rom is -- instruction memory
-port(
-	addr: IN STD_LOGIC_VECTOR(31 downto 0); 
---template-> a: in STD_LOGIC_VECTOR(5 downto 0);
---     	    rd: out STD_LOGIC_VECTOR(31 downto 0)
-	dataOut: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
-);
+	port(
+		addr: IN STD_LOGIC_VECTOR(31 downto 0); 
+		dataOut: OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	);
 end rom;
+
 architecture behavior of rom is
 begin
 process is
@@ -17,7 +38,9 @@ file mem_file: TEXT;
 variable L: line;
 variable ch: character;
 variable i, index, result: integer;
-type ramtype is array (63 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
+
+type ramtype is array (2**16 downto 0) of STD_LOGIC_VECTOR(31 downto 0);
+
 variable mem: ramtype;
 begin
 for i in 0 to 63 loop 

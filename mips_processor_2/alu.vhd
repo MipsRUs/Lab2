@@ -10,7 +10,7 @@
 --		Linda Vang (ID# 71434490)
 --
 -- Description:
---		This is a register file
+--		This is an ALU
 --
 -- History:
 -- 		Date		Update Description			Developer

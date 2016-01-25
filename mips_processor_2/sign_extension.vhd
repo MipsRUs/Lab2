@@ -10,7 +10,8 @@
 --		Linda Vang (ID# 71434490)
 --
 -- Description:
---		This is a RAM
+--		This is a sign extension,
+--		sign extends 16 bits to 32 bits
 --
 -- History:
 -- 		Date		Update Description			Developer
